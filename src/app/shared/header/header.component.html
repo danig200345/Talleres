@@ -1,0 +1,25 @@
+<header class="bg-teal-600 text-white">
+  <div
+    class="container mx-auto px-4 py-4 flex flex-col 2xl:flex-row xl:flex-row lg:flex-row md:flex-row sm:flex-row justify-between items-center">
+    <!-- Logo o título del sitio -->
+    <h1 class="text-2xl font-extrabold">Cursos taller</h1>
+    <!-- Navegación -->
+    <nav>
+      <ul class="flex space-x-6">
+        <li>
+          <a routerLink="/" class="hover:text-teal-200 transition duration-300 font-bold">Inicio</a>
+        </li>
+        <li>
+          <a routerLink="/cursos" class="hover:text-teal-200 transition duration-300 font-bold">Cursos</a>
+        </li>
+        <li>
+          <a href="#" class="hover:text-teal-200 transition duration-300 font-bold">Subir Constancias</a>
+        </li>
+        <li>
+          <a (click)="logoutUser()" style="cursor: pointer;"
+            class="hover:text-teal-200 transition duration-300 font-bold">Cerrar sesion</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,18 @@
+<section class="container mx-auto px-4">
+  <div class="xl:mx-20 lg:mx-14 md:mx-10 sm:mx-5">
+    <h1 class="xl:text-5xl lg:text-3xl md:text-2xl sm:text-xl font-extrabold text-center my-8">Cursos disponibles</h1>
+    <div class="flex flex-wrap">
+      @for (curso of cursos; track curso.id) {
+      <div
+        class="mb-6 xl:w-1/3 lg:w-1/2 sm:w-full transform transition duration-300 hover:shadow-lg hover:-translate-y-3 p-4 flex flex-col">
+        <img class="w-full h-auto rounded-lg" src="{{curso.imagen}}" alt="imagen curso">
+        <h2 class="xl:text-2xl md:text-xl sm:text-lg text-lg font-semibold mt-4 mb-4 flex-grow">
+          {{curso.nombre}}
+        </h2>
+        <a class="w-full text-center inline-block px-4 py-2 text-white font-semibold bg-teal-600 rounded hover:bg-teal-700 transition duration-300 ease-in-out transform hover:scale-110"
+          href="{{curso.link}}" target="_blank"> Ver curso</a>
+      </div>
+      }
+    </div>
+  </div>
+</section>
