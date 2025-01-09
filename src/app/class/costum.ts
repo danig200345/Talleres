@@ -1,6 +1,8 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http'
+import { catchError, map } from 'rxjs';
 export class CustomValidators {
+  constructor(private http: HttpClient) { }
   // Validador para el nombre de usuario
   static userName(control: AbstractControl): ValidationErrors | null {
     const user = control.value;
@@ -25,17 +27,19 @@ export class CustomValidators {
 
     return null;
   }
-  
+  static userMatch(control: AbstractControl): ValidationErrors | null {
+    const user = control.value
+    return null
+  }
+
+
   static passwordMatch(control: AbstractControl): ValidationErrors | null {
     const password = control.value;
-    const confirmPasswordControl = control.get('confirmPassword');
-    if (!confirmPasswordControl) {
-      return { passwordMatch: 'El campo de confirmación de contraseña no se encuentra.' };
-    }
-    const confirmPassword = confirmPasswordControl.value;
-    if (password !== confirmPassword) {
-      return { passwordMatch: 'Las contraseñas no coinciden.' };
-    }
-    return null;
+
+    catchError(() => {
+      // En caso de error en la API
+      return [{ passwordMatch: 'Error al verificar la contraseña.' }];
+    })
+    return null
   }
 }
