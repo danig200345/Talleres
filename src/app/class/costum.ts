@@ -2,7 +2,8 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
 import { catchError, map } from 'rxjs';
 export class CustomValidators {
-  constructor(private http: HttpClient) { }
+  user: [] = []
+  constructor(private http: HtppClient, private getUser: LoginService ){}
   // Validador para el nombre de usuario
   static userName(control: AbstractControl): ValidationErrors | null {
     const user = control.value;
@@ -27,8 +28,21 @@ export class CustomValidators {
 
     return null;
   }
+  userVerify() {
+    this.getUser.getUsers().suscribe(data => {
+      this.user = data
+    })
+
+    
+  }
   static userMatch(control: AbstractControl): ValidationErrors | null {
     const user = control.value
+    const userV = userVerify()
+    if (!userV && userV == user){
+      return {
+        userMatch: 'El usuario no existe'
+      }
+    }
     return null
   }
 
